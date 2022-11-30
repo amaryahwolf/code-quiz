@@ -2,7 +2,9 @@
 
 var startButton = document.querySelector("#startquiz");
 
-// Present with first question after clicking start button
+// Create an object to store the components of the question: title and options 
+
+// Create a function to show question
 
 // Display and start timer after clicking start button
 
@@ -19,3 +21,15 @@ var startButton = document.querySelector("#startquiz");
 
 // Add event listener to start quiz button
 startButton.addEventListener("click")
+
+// GIVEN I am taking a code quiz
+// WHEN I click the start button
+// THEN a timer starts and I am presented with a question
+// WHEN I answer a question
+// THEN I am presented with another question
+// WHEN I answer a question incorrectly
+// THEN time is subtracted from the clock
+// WHEN all questions are answered or the timer reaches 0
+// THEN the game is over
+// WHEN the game is over
+// THEN I can save my initials and my score

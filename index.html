@@ -9,24 +9,22 @@
 </head>
 <body>
 
-    <!-- divs for welcome page-->
+    <!--Main card with questions, start button and user form-->
     <div class="card">
-        <div class="card-header">
-
-        </div>
-        <div class="card-body">
-            
-        </div>
-        <div class="card-footer">
-            <div>
-                 <button id="startquiz" class="button">Start Quiz</button>
+        <div id="question-cards" class="hide">
+            <div id="question">Question</div>
+            <div id="answer-buttons" class="button-grid">
+                <button class="button"></button>
+                <button class="button"></button>
+                <button class="button"></button>
+                <button class="button"></button>
             </div>
         </div>
+        <div class="quiz-start">
+            <button id="start-button" class="start-button button">Start Quiz</button>
+        </div>
+        <!-- Add form so user can save intials and score -->
     </div>
-
-    <!-- divs for questions -->
-
-    <!-- divs for game over/save score -->
 
     <script src="./assets/script.js"></script>
 </body>

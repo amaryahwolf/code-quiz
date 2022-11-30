@@ -6,45 +6,89 @@
     --pink: #D1345B;
 }
 
-* {
-    margin: 0;
-    padding: 0;
+*, *::before, *::after {
+    box-sizing: border-box;
+    font-family: Arial, Helvetica, sans-serif
 }
 
 body {
+    padding: 0;
+    margin:0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
     background-color: var(--white);
 }
 
+/* Style card that holds Start, Quiz Questions and User Input Form */
 .card {
+    width: 800px;
+    max-width: 80%;
+    height: 400px;
+    margin: 60px;
+    padding: 10px;
+    background-color: var(--white);
     border-radius: 5px;
     border-width: 1px;
-    box-shadow: rgba(0, 0, 0, 0.15) 0px 2px 8px 0px;
-    margin: 20px auto;
-    max-width: 800px;
-    height: 500px;
-    padding: 30px 40px;
+    box-shadow: var(--turquoise) 0px 2px 8px 0px;
   }
 
-  .card-header {
-
-  }
-
-  .card-body {
-
-  }
-
-  .card-footer {
-    text-align: center;
-  }
-
-button {  
-    border: none;
-    background-color: var(--blue);
-    border-radius: 25px;
-    color: var(--white);      
-    font-size: 22px;
-    line-height: 22px;
-    padding: 14px 34px;
-    cursor: pointer; 
-    text-align: center;  
+  /* Hide the Question Cards */
+.hide {
+    display: none;
 }
+
+/* Style the grid with multiple choice answer options */
+.button-grid {
+    display: grid;
+    gap: 10px;
+    margin: 20px, 0px;
+}
+
+/* Style all buttons */
+.button {
+    background-color: var(--blue);
+    border: 1px solid (var--blue);
+    border-radius: 5px;
+    padding: 5px, 10px;
+    color: white;
+    outline: none;
+    cursor: pointer;
+}
+
+/* Change border color when any button is hovered over */
+.button:hover {
+    border-color: var(--black);
+}
+
+/* Change answer button color if answer is correct */
+.button.correct {
+   background-color: var(--turquoise);
+   color: var(--black);
+}
+
+/* Change answer button color if answer is incorrect */
+.button.wrong {
+    background-color: var(--pink);
+    color: var(--black);
+}
+
+/* Style the Quiz Start page */
+.quiz-start {
+    display: flex;
+    justify-content: center;
+    align-items:center;
+}
+
+/* Style the Start Quiz */
+/* Need to place Start Quiz button at bottom of card + add Title and Quiz Description */
+.start-button {
+    font-size: 40px;
+    font-weight: bold;
+    padding: 10px 20px;
+}
+
+/* Add form styling so user can save initals and score */
+
+
+
