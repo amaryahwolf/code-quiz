@@ -1,6 +1,29 @@
-// Welcome page with a "clickable" start button to start the game
+// Query Selectors
+var startButton = document.querySelector("#start-button");
+var questionCard = document.querySelector("#question-cards")
+// Global variables
 
-var startButton = document.querySelector("#startquiz");
+
+// Create a function to start quiz, hide start page, show question card and call Question function
+function startQuiz() {
+    startButton.classList.add("hide")
+    questionCard.classList.remove("hide")
+    nextQuestion()
+}
+
+// Create a function to show response result and show next question
+function nextQuestion() {
+
+}
+
+// Create a function to check for correct answer
+function checkAnswer() {
+
+}
+
+
+
+
 
 // Create an object to store the components of the question: title and options 
 
@@ -20,7 +43,7 @@ var startButton = document.querySelector("#startquiz");
 
 
 // Add event listener to start quiz button
-startButton.addEventListener("click")
+startButton.addEventListener("click", startQuiz)
 
 // GIVEN I am taking a code quiz
 // WHEN I click the start button

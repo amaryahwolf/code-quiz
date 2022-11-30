@@ -23,7 +23,21 @@
         <div class="quiz-start">
             <button id="start-button" class="start-button button">Start Quiz</button>
         </div>
-        <!-- Add form so user can save intials and score -->
+           <!-- Add form so user can save intials and score -->
+        <div id="initials-form" class="hide">
+            <h2>All done!</h2>
+            <form action="" method="post">
+            <ul>
+                <li>
+                    <label for="initials">Initials:</label>
+                    <input type="text" id="initials" name="user_initials"/>
+                </li>
+                <li>
+                    <button type="submit" class="form-button button">Submit</button>
+                </li>
+            </ul>
+            </form>
+        </div>   
     </div>
 
     <script src="./assets/script.js"></script>

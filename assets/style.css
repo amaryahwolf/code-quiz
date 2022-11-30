@@ -89,6 +89,28 @@ body {
 }
 
 /* Add form styling so user can save initals and score */
+form {
+    margin: 0 auto;
+    width: 400px;
+    padding: 10px;
+    border-radius: 5px;
+    border-width: 1px;
+    box-shadow: var(--turquoise) 0px 2px 8px 0px;
+}
 
+ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
 
+label {
+    display: inline-block;
+    width: 90px;
+    text-align: right;
+}
+
+.form-button {
+    
+}
 
