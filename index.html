@@ -8,9 +8,12 @@
     <link rel="stylesheet" href="./assets/style.css">
 </head>
 <body>
-
-    <!--Main card with questions, start button and user form-->
+    <!-- Timer -->
+ <div class="timer-count" value="0"></div>
+    <!--Main Card-->
     <div class="card">
+       
+        <!-- Questions Pages -->
         <div id="question-cards" class="hide">
             <div id="question">Question</div>
             <div id="answer-buttons" class="button-grid">
@@ -20,10 +23,11 @@
                 <button class="button"></button>
             </div>
         </div>
+        <!-- Start Page -->
         <div class="quiz-start">
             <button id="start-button" class="start-button button">Start Quiz</button>
         </div>
-           <!-- Add form so user can save intials and score -->
+           <!-- End Quiz / User Initials Form-->
         <div id="initials-form" class="hide">
             <h2>All done!</h2>
             <form action="" method="post">
@@ -37,7 +41,11 @@
                 </li>
             </ul>
             </form>
-        </div>   
+        </div>
+        <!-- Scoreboard / Play again -->
+        <div id="scoreboard">
+
+        </div>
     </div>
 
     <script src="./assets/script.js"></script>

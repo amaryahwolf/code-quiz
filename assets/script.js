@@ -1,19 +1,55 @@
 // Query Selectors
 var startButton = document.querySelector("#start-button");
-var questionCard = document.querySelector("#question-cards")
+var questionCard = document.querySelector("#question-cards");
+var timerElement = document.querySelector(".timer-count");
+
+// Add event listener to start quiz button
+startButton.addEventListener("click", startQuiz)
+
 // Global variables
+var timer;
+var timerCount;
+var gameOver;
 
 
-// Create a function to start quiz, hide start page, show question card and call Question function
+//  Create a function to start quiz, hide start page, show question card and call Question function
 function startQuiz() {
-    startButton.classList.add("hide")
-    questionCard.classList.remove("hide")
-    nextQuestion()
+    gameOver = false;
+    timerCount = 20;
+    startButton.classList.add("hide");
+    questionCard.classList.remove("hide");
+    startTimer();
+    nextQuestion();
+}
+
+function startTimer() {
+    timer = setInterval(function () {
+        timerCount--;
+        timerElement.textContent = timerCount;
+        if (timerCount >= 0) {
+            if (gameOver && timerCount > 0) {
+                clearInterval(timer);
+                winGame();
+            }
+        }
+        if (timerCount === 0) {
+            clearInterval(timer);
+            loseGame();
+        }
+    }, 2000)
 }
 
 // Create a function to show response result and show next question
 function nextQuestion() {
+// Array of objects with questions, answers, correct answers
+}
 
+function winGame() {
+    console.log("You won!")
+}
+
+function loseGame() {
+    console.log("You lose!")
 }
 
 // Create a function to check for correct answer
@@ -42,8 +78,7 @@ function checkAnswer() {
 // Browser should recall initials and score even when game is closed out of
 
 
-// Add event listener to start quiz button
-startButton.addEventListener("click", startQuiz)
+
 
 // GIVEN I am taking a code quiz
 // WHEN I click the start button
