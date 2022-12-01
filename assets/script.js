@@ -4,6 +4,8 @@ var questionCard = document.querySelector("#question-cards");
 var timerElement = document.querySelector(".timer-count");
 var questionElement = document.querySelector("#question");
 var optionsButtonElement = document.querySelector("answer-buttons");
+var points = document.querySelector(".points");
+var scoreboardForm = document.querySelector("#initials-form")
 
 // Add event listener to start quiz button
 startButton.addEventListener("click", startQuiz)
@@ -13,9 +15,33 @@ var timer;
 var timerCount;
 var quizOver;
 var index = 0;
+var pointCounter = 0;
+// Array of objects with questions, options, correct answers
+var questions = 
+[
+    {
+        question: "Are apples red?",
+        options: ["Yes", "No", "Maybe", "So"],
+        answer: 2
+    },
+    {
+        question: "What is x?",
+        options: ["x", "y", "z", "a"],
+        answer: 2
+    },
+    {
+        question: "What is y?",
+        options: ["x", "y", "z", "a"],
+        answer: 2
+    },
+    {
+        question: "What is z?",
+        options: ["x", "y", "z", "a"],
+        answer: 2
+    }
+];
 
-
-//  Create a function to start quiz, hide start page, and call Question function
+//  Create a function to start quiz, hide start page, and call Quiz function
 function startQuiz() {
     quizOver = false;
     timerCount = 90;
@@ -25,6 +51,7 @@ function startQuiz() {
     takeQuiz();
 }
 
+// Create function to make a countdown timer
 function startTimer() {
     timerElement.textContent = timerCount;
     timer = setInterval(function () {
@@ -32,96 +59,80 @@ function startTimer() {
         timerElement.textContent = timerCount;
         if (timerCount >= 0) {
             if (quizOver && timerCount > 0) {
-                clearInterval(timer);
+                // clearInterval(timer);
+                endQuiz();
             }
         }
         if (timerCount === 0) {
-            clearInterval(timer);
+            // clearInterval(timer);
+            endQuiz();
         }
     }, 1000)
 }
-
- // Array of objects with questions, options, correct answers
-    var questions = 
-    [
-        {
-            question: "Are apples red?",
-            options: ["Yes", "No", "Maybe", "So"],
-            answer: 2
-        },
-        {
-            question: "What is x?",
-            options: ["x", "y", "z", "a"],
-            answer: 2
-        },
-        {
-            question: "What is y?",
-            options: ["x", "y", "z", "a"],
-            answer: 2
-        },
-        {
-            question: "What is z?",
-            options: ["x", "y", "z", "a"],
-            answer: 2
-        }
-    ];
-
-// Function to render questions onto the pageFunction to render options onto page; use .createElement to create option buttons and question label
+ 
+// Function to render questions and options onto the page
 function takeQuiz() {
     var questionObject = (questions[index]);
    questionElement.textContent = questionObject.question;
    var optionsArray = questionObject.options;
    document.querySelector("#answer-buttons").innerHTML = ""
-   for(var j=0; j < optionsArray.length; j++){
+   for(var i=0; i < optionsArray.length; i++) {
        var btn = document.createElement("button");
        btn.addEventListener("click", checkAnswer);
        btn.classList.add("button")
-       if (j === questionObject.answer) {
+       if (i === questionObject.answer) {
         btn.dataset.correct = true;
        } else {
         btn.dataset.incorrect = false;
        }
-        btn.textContent = optionsArray[j];
+        btn.textContent = optionsArray[i];
        document.querySelector("#answer-buttons").appendChild(btn);
    }
 }
 
 // If the button pressed is the same as answer value (index) then it is right, add 1 point and say "Correct", else wrong
 function checkAnswer(event) {
-   if (event.target.dataset === true) {
-    document.querySelector("#correct").textContent = "Correct!"
-    console.log("Correct")
+   if (event.target.dataset.correct === "true") {
+    document.querySelector("#correct").textContent = "Correct!";
+    pointCounter+=5;
    } else {
-    timerCount-=10
-    document.querySelector("#correct").textContent = "Incorrect!"
+    timerCount-=10;
+    document.querySelector("#correct").textContent = "Incorrect!";
    }
 //    Increase index by 1 every time it loops back to takeQuiz
     index++    
     if (index < questions.length) {  
    takeQuiz() 
 }  else {
-    console.log("Game Over")
+    endQuiz()
 }
 }
 
+// Function to show score, add initials and save score
+function endQuiz() {
+    questionCard.classList.add("hide");
+    clearInterval(timer);
+    scoreboardForm.classList.remove("hide");
+}
 
+// Function to add points to scoreboard and store in local storage
+function setPoints() {
+    points.textContent = pointCounter;
+    localStorage.setItem("pointCount", pointCounter);
+}
 
+// Function to get points from local storage
+function getPoints() {
+    var storedPoints = localStorage.getItem("pointCount");
+    if (storedPoints === null) {
+        pointCounter = 0;
+    } else {
+        pointCounter = storedPoints; 
+    }
+    points.textContent = pointCounter;
+    }
 
-
-// If the option selected is correct, add one point, else add 0 points
-
-// Create an object to store the components of the question: title and options 
-
-// Create a function to show question
-
-// Display and start timer after clicking start button
-
-// After question response is clicked, display "Right" or "Wrong" depending on response
-
-// If question is answered incorrectly, subtract 5 seconds from timer
-
-// End the game when all questions have been answered or the timer runs out
-
-// Prompt user to save initials and score
-
-// Browser should recall initials and score even when game is closed out of
+// Create a function to add points each time an answer is correct
+// Add divs to start page with title and description
+// Add functionality/storage to form
+// Create scoreboard/play again page
