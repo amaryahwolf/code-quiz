@@ -9,6 +9,9 @@ var enterInitialsForm = document.querySelector("#initials-form");
 var submitButton = document.querySelector(".form-button");
 var scoreboardPlayAgain = document.querySelector("#scoreboard");
 var startPage = document.querySelector(".quiz-start");
+var initials = document.querySelector("#initials")
+var highscoreEl = document.querySelector(".highscore")
+var playAgainBtn = document.querySelector("#playagain-btn")
 
 // Add event listener to start quiz button
 startButton.addEventListener("click", startQuiz);
@@ -46,7 +49,7 @@ var questions = [
 //  Create a function to start quiz, hide start page, and call Quiz function
 function startQuiz() {
   quizOver = false;
-  timerCount = 90;
+  timerCount = 60;
   startButton.classList.add("hide");
   questionCard.classList.remove("hide");
   startTimer();
@@ -61,12 +64,10 @@ function startTimer() {
     timerElement.textContent = timerCount;
     if (timerCount >= 0) {
       if (quizOver && timerCount > 0) {
-        // clearInterval(timer);
         endQuiz();
       }
     }
     if (timerCount === 0) {
-      // clearInterval(timer);
       endQuiz();
     }
   }, 1000);
@@ -97,6 +98,7 @@ function checkAnswer(event) {
   if (event.target.dataset.correct === "true") {
     document.querySelector("#correct").textContent = "Correct!";
     pointCounter += 5;
+    console.log(pointCounter);
   } else {
     timerCount -= 10;
     document.querySelector("#correct").textContent = "Incorrect!";
@@ -115,6 +117,7 @@ function endQuiz() {
   questionCard.classList.add("hide");
   clearInterval(timer);
   enterInitialsForm.classList.remove("hide");
+  setPoints()
 }
 
 // Function to add points to scoreboard and store in local storage
@@ -126,25 +129,26 @@ function setPoints() {
 // Function to get points from local storage
 function getPoints() {
   var storedPoints = localStorage.getItem("pointCount");
-  if (storedPoints === null) {
-    pointCounter = 0;
-  } else {
-    pointCounter = storedPoints;
-  }
-  points.textContent = pointCounter;
+  var storedInitials = localStorage.getItem("initials")
+  var finalScore = storedInitials + ": " + storedPoints;
+  var scoreArr = JSON.parse(localStorage.getItem("scoreList")) || [];
+  scoreArr.push(finalScore);
+  localStorage.setItem("scoreList", JSON.stringify(scoreArr));
+  scoreArr.forEach(function(score){ 
+    console.log(scoreArr, score)
+    highscoreEl.textContent += score
+  })
 }
 
 // Function to display highschores and option to play again
-function playAgain() {
+function playAgain(event) {
+  event.preventDefault();
   enterInitialsForm.classList.add("hide");
   scoreboardPlayAgain.classList.remove("hide");
-  // Display local storage of scores and initials
-  // Play Again button to start page
+  localStorage.setItem("initials", initials.value);
+  getPoints() 
 }
 
 submitButton.addEventListener("click", playAgain);
+playAgainBtn.addEventListener("click", function(){location.reload()})
 
-// Create a function to add points each time an answer is correct
-// Add divs to start page with title and description
-// Add functionality/storage to form
-// Create scoreboard/play again page
