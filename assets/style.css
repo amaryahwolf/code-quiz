@@ -6,14 +6,16 @@
     --pink: #D1345B;
 }
 
-*, *::before, *::after {
+*,
+*::before,
+*::after {
     box-sizing: border-box;
     font-family: Arial, Helvetica, sans-serif
 }
 
 body {
     padding: 0;
-    margin:0;
+    margin: 0;
     display: flex;
     justify-content: center;
     align-items: center;
@@ -31,9 +33,9 @@ body {
     border-radius: 5px;
     border-width: 1px;
     box-shadow: var(--turquoise) 0px 2px 8px 0px;
-  }
+}
 
-  /* Hide the Question Cards */
+/* Hide the Question Cards */
 .hide {
     display: none;
 }
@@ -63,8 +65,8 @@ body {
 
 /* Change answer button color if answer is correct */
 .button.correct {
-   background-color: var(--turquoise);
-   color: var(--black);
+    background-color: var(--turquoise);
+    color: var(--black);
 }
 
 /* Change answer button color if answer is incorrect */
@@ -77,7 +79,7 @@ body {
 .quiz-start {
     display: flex;
     justify-content: center;
-    align-items:center;
+    align-items: center;
 }
 
 /* Style the Start Quiz */
@@ -110,7 +112,4 @@ label {
     text-align: right;
 }
 
-.form-button {
-    
-}
-
+.form-button {}

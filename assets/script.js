@@ -134,7 +134,7 @@ function getPoints() {
   var scoreArr = JSON.parse(localStorage.getItem("scoreList")) || [];
   scoreArr.push(finalScore);
   localStorage.setItem("scoreList", JSON.stringify(scoreArr));
-  scoreArr.forEach(function(score){ 
+  scoreArr.forEach(function (score) {
     console.log(scoreArr, score)
     highscoreEl.textContent += score
   })
@@ -146,9 +146,9 @@ function playAgain(event) {
   enterInitialsForm.classList.add("hide");
   scoreboardPlayAgain.classList.remove("hide");
   localStorage.setItem("initials", initials.value);
-  getPoints() 
+  getPoints()
 }
 
 submitButton.addEventListener("click", playAgain);
-playAgainBtn.addEventListener("click", function(){location.reload()})
+playAgainBtn.addEventListener("click", function () { location.reload() })
 

@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -7,12 +8,13 @@
     <title>Code Quiz</title>
     <link rel="stylesheet" href="./assets/style.css">
 </head>
+
 <body>
     <!-- Timer -->
- <div class="timer-count" value="0"></div>
+    <div class="timer-count" value="0"></div>
     <!--Main Card-->
     <div class="card">
-       
+
         <!-- Questions Pages -->
         <div id="question-cards" class="hide">
             <div id="question"></div>
@@ -26,23 +28,23 @@
             <button id="start-button" class="start-button button">Start Quiz</button>
         </div>
 
-           <!-- End Quiz / User Initials Form-->
+        <!-- End Quiz / User Initials Form-->
         <div id="initials-form" class="hide">
             <h2>All done!</h2>
             <h2>Points: <span class="points">0 </span> </h2>
             <form action="" method="post">
-            <ul>
-                <li>
-                    <label for="initials">Initials:</label>
-                    <input type="text" id="initials" name="user_initials"/>
-                </li>
-                <li>
-                    <button type="submit" class="form-button button">Submit</button>
-                </li>
-            </ul>
+                <ul>
+                    <li>
+                        <label for="initials">Initials:</label>
+                        <input type="text" id="initials" name="user_initials" />
+                    </li>
+                    <li>
+                        <button type="submit" class="form-button button">Submit</button>
+                    </li>
+                </ul>
             </form>
         </div>
-        
+
         <!-- Scoreboard / Play again -->
         <div id="scoreboard" class="hide">
             <h3>Highscores: </h3>
@@ -53,4 +55,5 @@
 
     <script src="./assets/script.js"></script>
 </body>
+
 </html>
